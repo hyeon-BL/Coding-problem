@@ -1,46 +1,46 @@
-#include<iostream>
-#include<queue>
+#include <iostream>
+#include <queue>
+
 using namespace std;
 
+int main()
+{
+	int testn;
+	int n, m;
+	int mj;
+	int count;
 
-void printer() {
-    int n, m, r;
-    queue<pair<int, int>> q;
-    priority_queue<int> pq;
-    cin >> n >> r; // n: 문서의 개수, r: 몇 번째로 인쇄되었는지 궁금한 문서의 위치
-    for (int i = 0; i < n; i++) {
-        cin >> m; // m: 문서의 중요도
-        q.push({ i, m });
-        pq.push(m);
-    }
-    while (!q.empty()) {
-        int idx = q.front().first;
-        int val = q.front().second;
-        q.pop();
+    cin >> testn;
+	for (int i = 0; i < testn; i++) { // 테스트 케이스 수 만큼 반복
+		count = 0;
+        cin >> n >> m; // n: 문서의 개수, m: 궁금한 문서의 위치
+		
+		priority_queue<int> pq; // 내림차순 정렬
+		queue<pair<int, int>> q;
 
-        if (val == pq.top()) {
-            pq.pop();
-            if (idx == r) {
-                cout << n - q.size() << endl;
-                break;
-                if (i == n - 1) {
-                    cout << n - q.size();
-                }
-            }
-        else {
-            q.push({ idx, val });
-            }
-        }
-    }
-}
+		for (int j = 0; j < n; j++) { // 문서의 중요도 입력
+            cin >> mj;
+			q.push({ j, mj });
+			pq.push(mj);
+		}
 
+		while (!q.empty()) {
+			int loc = q.front().first;
+			int val = q.front().second;
+			q.pop();
+            
+			if (pq.top() == val) {
+				pq.pop();
+				count++;
+				if (m == loc) {
+					printf("%d\n", count);
+					break;
+				}
+			}
 
+			else q.push({ loc, val });
+		}
+	}
 
-int main() {
-    int test_n;
-    static arr[test_n];
-    cin >> test_n; // test_n: 총 테스트 케이스의 수
-    for (int i = 0; i < test_n; i++) {
-        printer();
-    }
+	return 0;
 }
