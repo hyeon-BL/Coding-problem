@@ -2,11 +2,11 @@
 #include <algorithm>
 using namespace std;
 
-long K, N; // K: 랜선의 개수, N: 필요한 랜선의 개수 (long으로 overflow 방지)
+long K, N; // K: 랜선의 개수, N: 필요한 랜선의 개수
 long arr[10000];
 int res;
 
-void binary(long long low, long long high) {
+void binary(long long low, long long high) { // long long으로 선언(overflow 방지)
     if (low > high) {
         return;
     }
