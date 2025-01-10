@@ -13,9 +13,9 @@ int main()
     vector<string> scenarios;
     int n;
     int cnt = 1;
-    bool flag = false;
     while (true)
     {
+        bool flag = false;
         cin >> o >> w;
         if (o == 0 && w == 0)
         {
@@ -34,8 +34,6 @@ int main()
                 w -= n;
                 if (w <= 0 && !flag)
                 {
-                    scenarios.push_back(to_string(cnt) + " " + "RIP");
-                    cnt++;
                     flag = true;
                 }
             }
@@ -43,7 +41,7 @@ int main()
             {
                 w += n;
             }
-            else if (scenario == "#")
+            else if (scenario == "#" && n == 0)
             {
                 if (w > o / 2 && w < o * 2 && !flag)
                 {
