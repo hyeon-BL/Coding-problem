@@ -3,6 +3,12 @@
 #include <queue>
 using namespace std;
 
+/*
+1. N개의 문제를 풀어야 함
+2. M개의 문제를 먼저 풀어야 함 -> 위상정렬
+3. 가능하면 작은 번호의 문제부터 풀어야 함 -> 최소힙
+*/
+
 int main()
 {
     cin.tie(0);
